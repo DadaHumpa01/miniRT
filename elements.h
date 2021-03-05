@@ -37,14 +37,17 @@ typedef	struct	s_light
 	t_color		color;
 }				t_light;
 
-typedef	struct	s_ray
+//Mi serve una struttura utile per contenere i valori calcolati per le intersezioni
+typedef struct s_calc
 {
-	t_vector	ori;
-	t_vector	dir;
-}				t_ray;
+	float a;
+	float b;
+	float c;
+	float delta;
+	t_vector sub;
+}				t_calc;
 
 // A seguire vi sono le figure base
-
 typedef struct	s_sphere
 {
 	t_vector	pos;
