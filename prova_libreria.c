@@ -29,8 +29,8 @@ int main(void)
     void *mlx;
 	void *mlx_win;
 
-	int image_height = 1920;
-	int image_width = 1080;
+	int image_height = 500;
+	int image_width = 500;
 
     t_data img;
 

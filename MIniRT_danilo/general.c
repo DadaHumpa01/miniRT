@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   general.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrignon <dbrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/27 14:29:22 by dbrignon          #+#    #+#             */
-/*   Updated: 2021/03/05 18:41:04 by dbrignon         ###   ########.fr       */
+/*   Created: 2021/03/05 17:07:51 by dbrignon          #+#    #+#             */
+/*   Updated: 2021/03/06 15:43:50 by dbrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "minirt.h"
 
-typedef struct	s_data {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
-int		create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int			main(void)
+int		main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
+	t_info	gen;
+	t_vet	vettor;
 	int		x;
 	int		y;
 	int asorteta;
@@ -54,14 +35,11 @@ int			main(void)
 	{
 		for (int i = 0; i < image_width; ++i)
 		{
-			float r = (float)(i) / (float)(image_width);
-            float g = (float)(i) / (float)(image_width);             
-            float b = 1;
-
-            int ir = (int)(255.999 * r);
-            int ig = (int)(255.999 * g);
-			int ib = (int)(255.999 * b);
-			asorteta = create_trgb(0, ir, ig, ib);
+			gen.r = (float)(i) / (float)(image_width);
+			gen.g = (float)(j) / (float)(image_height);             
+			gen.b = 0.25;
+			gen.t = 0;
+			asorteta = icolor(&gen);
 			my_mlx_pixel_put(&img, j, i, asorteta);
         }
     }

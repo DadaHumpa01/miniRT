@@ -1,27 +1,26 @@
-#include <iostream>
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    vec2 uv = (fragCoord-.5*iResolution.xy)/iResolution.y;
 
-int main() {
+    // background
+    vec3 col = vec3(0);
+    
+    vec3 ro = vec(0);
+    vec3 rd = normalize(vec3(uv.x, uv.y, 1));
+    
+    vec3 s = vec3(0, 0, 4);
+    float r = 1.;
+    
+    float t = dot(s-ro, rd);
+    vec3 p = ro + rd*t;
+    float y = length(s-p);
 
-    // Image
-
-    const int image_width = 200;
-    const int image_height = 100;
-
-    // Render
-
-    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
-
-    for (int j = image_height-1; j >= 0; --j) {
-        for (int i = 0; i < image_width; ++i) {
-            float r = float(i) / float(image_width);
-            float g = float(j) / float(image_height);             
-            float b = 0.25;
-
-            int ir = int(255.999 * r);
-            int ig = int(255.999 * g);
-            int ib = int(255.999 * b);
-
-            std::cout << ir << ' ' << ig << ' ' << ib << '\n';
-        }
+    if (y<r){
+        float x = sqrt(r*r - y*y);
+        float t1 = t-x;
+        float t2 = t+ x;
+        col = vec3(1);
     }
+    
+    fragColor = vec4(col,1.0);
 }
