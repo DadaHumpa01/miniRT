@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrignon <dbrignon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 17:08:09 by dbrignon          #+#    #+#             */
-/*   Updated: 2021/03/06 15:43:31 by dbrignon         ###   ########.fr       */
+/*   Updated: 2021/03/10 10:28:07 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct	s_data {
 	void		*img;
@@ -47,9 +48,32 @@ typedef struct	s_info {
 	float		c_y;
 }				t_info;
 
+
+typedef struct	s_camera{
+	float		x;
+	float		y;
+	float		z;
+	float		dx;
+	float		dy;
+	float		dz;
+	float		zoom;
+}				t_camera;
+
+typedef	struct	s_sfera{
+	float		x;
+	float		y;
+	float		z;
+	float		raggio;
+}				t_sfera;
+
 int				create_trgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int 			icolor(t_info *gen);
-int				norma(t_vet *vettor);
-void			norma_vettori(t_vet *vettor);
+float			vec3_norma(t_vet *vettor);
+void			norma_vettori(t_vet *vettor, float res);
+float			dot_vec3(t_sfera *cerchio, t_camera *cam, int i);
+void			calcoloL(t_vet *vettor, t_camera *cam, t_sfera *cerchio);
+void			direzione_cerchio(t_vet *vettor, t_info *gen, t_camera *cam);
+float			dot_sfera(t_vet *vettor, t_camera *cam, t_sfera *cerchio, int i);
+
 #endif

@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 18:31:42 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/10 19:20:00 by danilo           ###   ########.fr       */
+/*   Created: 2021/03/10 19:14:41 by danilo            #+#    #+#             */
+/*   Updated: 2021/03/10 19:20:56 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-# include <mlx.h>
-# include <math.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "struct.h"
+typedef struct	s_info {
+	float 		r;
+	float 		g;	
+	float 		b;
+	float 		t;
+}				t_info;
 
-typedef struct	s_data {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
-
-int				create_trgb(int t, int r, int g, int b);
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int 			icolor(t_info *gen);
+typedef struct s_vet{
+	float		x;
+	float		y;
+	float		z;
+	float		dx;
+	float		dy;
+	float		dz;
+	float		nx;
+	float		ny;
+	float		nz;
+}				t_vet;
 
 #endif

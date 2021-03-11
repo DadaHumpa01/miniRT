@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   divisione.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 18:31:42 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/10 19:20:00 by danilo           ###   ########.fr       */
+/*   Created: 2021/03/10 10:47:17 by danilo            #+#    #+#             */
+/*   Updated: 2021/03/10 10:55:00 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <stdio.h>
 
-# include <mlx.h>
-# include <math.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "struct.h"
+int main(void)
+{
+    int i;
+    int j;
 
-typedef struct	s_data {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
-
-int				create_trgb(int t, int r, int g, int b);
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int 			icolor(t_info *gen);
-
-#endif
+    i = 0;
+    j = 0;
+    while (i != 20)
+    {
+        j = 0;
+        while (j != 20)
+        {
+            printf("%f, %f\n",i / 20., j / 20.);
+            j++;
+        }
+        i++;
+    }
+}
