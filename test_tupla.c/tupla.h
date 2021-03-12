@@ -1,7 +1,7 @@
 #ifndef TUPLA_H
 # define TUPLA_H
 
-#include "stdio.h"
+#include <stdio.h>
 #include <math.h>
 
 typedef	struct	s_tupla{
@@ -9,6 +9,12 @@ typedef	struct	s_tupla{
 	float		y;
 	float		z;
 	float		w;
+	double		nx;
+	double		ny;
+	double		nz;
+	double		px;
+	double		py;
+	double		pz;
 }				t_tupla;
 
 typedef	struct	s_aux{
@@ -29,5 +35,9 @@ void			tupla_sottrazione(t_tupla *tuple, t_aux *ausiliario);
 void			tupla_neg(t_tupla *tuple, t_aux *ausiliario);
 void			tupla_mot_scalare(t_tupla *tuple, t_aux *ausiliario, float num);
 void			tupla_div_scalare(t_tupla *tuple, t_aux *ausiliario, float num);
+double			tupla_magnitude(t_tupla *tuple, t_aux *ausiliario);
+void			tupla_normalizzazone(t_tupla *tuple, t_aux *ausiliario);
+double			tupla_dot(t_tupla *tupla, t_aux *ausiliario);
+void			tupla_dot_cross(t_tupla *tupla, t_aux *ausiliario);
 
 #endif
