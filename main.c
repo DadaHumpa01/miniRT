@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 08:32:07 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/12 16:53:01 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/12 18:18:58 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ int 	main(void)
 	pistola.vx = tuple.nx;
 	pistola.vy = tuple.ny;
 	pistola.vz = tuple.nz;
-	my_mlx_pixel_put(&img, (int)(pistola.x), (int)(pistola.y), asorteta);
-	printf("posizione attuale proiettile x = %d, y = %d z = %d\n", (int)(pistola.x), (int)(pistola.y), (int)(pistola.z));
-	while (pistola.y > 0)
+	my_mlx_pixel_put(&img, (int)(pistola.z * -1), (int)(image_width - pistola.x), asorteta);
+	printf("posizione attuale proiettile x = %d, y = %d z = %d\n", (int)(image_width- pistola.x), (int)(pistola.y), (int)(pistola.z));
+	while (pistola.y > 0.9)
 	{
 		tick(&pistola, &posto, &ausiliario, &tuple);
-		my_mlx_pixel_put(&img, (int)(pistola.x), (int)(pistola.y), asorteta);
-		printf("posizione attuale proiettile x = %d, y = %d z = %d\n", (int)(pistola.x), (int)(pistola.y), (int)(pistola.z));
+		my_mlx_pixel_put(&img, (int)(pistola.z * -1), (int)(image_width - pistola.x), asorteta);
+		printf("posizione attuale proiettile x = %d, y = %d z = %d\n", (int)(image_width -pistola.x), (int)(pistola.y ), (int)(pistola.z));
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
