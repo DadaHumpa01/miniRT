@@ -1,9 +1,10 @@
 #ifndef TUPLA_H
 # define TUPLA_H
 
-#include <stdio.h>
-#include <math.h>
-#include "mlx.h"
+# include "matrici/matrice.h"
+# include <stdio.h>
+# include <math.h>
+# include "mlx.h"
 
 typedef struct	s_data {
 	void		*img;

@@ -6,82 +6,76 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 08:32:07 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/12 18:18:58 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/13 21:24:54 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tupla.h"
 
-void	assegnazione_norm(t_proiettile *pistola, t_ambiente *posto, t_aux *ausiliario, t_tupla *tuple)
+void	stampa_matrix2a(t_matrici *matrix)
 {
-	tuple->x = pistola->vx;
-	tuple->y = pistola->vy;
-	tuple->z = pistola->vz;
+	printf("%f\t %f\n\n", matrix->mat2a[0][0], matrix->mat2a[0][1]);
+	printf("%f\t %f\n\n", matrix->mat2a[1][0], matrix->mat2a[1][1]);
 }
 
-void	tick(t_proiettile *pistola, t_ambiente *posto, t_aux *ausiliario, t_tupla *tuple)
+void	stampa_matrix2(t_matrici *matrix)
 {
-	pistola->x = pistola->x + pistola->vx;
-	pistola->y = pistola->y + pistola->vy;
-	pistola->z = pistola->z + pistola->vz;
-	pistola->vx = pistola->vx + posto->x + posto->vx;
-	pistola->vy = pistola->vy + posto->y + posto->vy;
-	pistola->vz = pistola->vz + posto->y + posto->vz;
+	printf("%f\t %f\n\n", matrix->mat2[0][0], matrix->mat2[0][1]);
+	printf("%f\t %f\n\n", matrix->mat2[1][0], matrix->mat2[1][1]);
+}
+
+void	stampa_matrix3a(t_matrici *matrix)
+{
+	printf("%f\t %f\t %f\n\n", matrix->mat3a[0][0], matrix->mat3a[0][1], matrix->mat3a[0][2]);
+	printf("%f\t %f\t %f\n\n", matrix->mat3a[1][0], matrix->mat3a[1][1], matrix->mat3a[1][2]);
+	printf("%f\t %f\t %f\n\n", matrix->mat3a[2][0], matrix->mat3a[2][1], matrix->mat3a[2][2]);
+}
+
+void	stampa_matrix3(t_matrici *matrix)
+{
+	printf("%f\t %f\t %f\n\n", matrix->mat3[0][0], matrix->mat3[0][1], matrix->mat3[0][2]);
+	printf("%f\t %f\t %f\n\n", matrix->mat3[1][0], matrix->mat3[1][1], matrix->mat3[1][2]);
+	printf("%f\t %f\t %f\n\n", matrix->mat3[2][0], matrix->mat3[2][1], matrix->mat3[2][2]);
+}
+
+void	stampa_matrix4p(t_matrici *matrix)
+{
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4p[0][0], matrix->mat4p[0][1], matrix->mat4p[0][2], matrix->mat4p[0][3]);
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4p[1][0], matrix->mat4p[1][1], matrix->mat4p[1][2], matrix->mat4p[1][3]);
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4p[2][0], matrix->mat4p[2][1], matrix->mat4p[2][2], matrix->mat4p[2][3]);
+	printf("%f\t %f\t %f\t %f\n\n\n", matrix->mat4p[3][0], matrix->mat4p[3][1], matrix->mat4p[3][2], matrix->mat4p[3][3]);
+}
+
+void	stampa_matrix4a(t_matrici *matrix)
+{
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4a[0][0], matrix->mat4a[0][1], matrix->mat4a[0][2], matrix->mat4a[0][3]);
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4a[1][0], matrix->mat4a[1][1], matrix->mat4a[1][2], matrix->mat4a[1][3]);
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4a[2][0], matrix->mat4a[2][1], matrix->mat4a[2][2], matrix->mat4a[2][3]);
+	printf("%f\t %f\t %f\t %f\n\n\n", matrix->mat4a[3][0], matrix->mat4a[3][1], matrix->mat4a[3][2], matrix->mat4a[3][3]);
+}
+
+void	stampa_matrix4(t_matrici *matrix)
+{
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4[0][0], matrix->mat4[0][1], matrix->mat4[0][2], matrix->mat4[0][3]);
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4[1][0], matrix->mat4[1][1], matrix->mat4[1][2], matrix->mat4[1][3]);
+	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4[2][0], matrix->mat4[2][1], matrix->mat4[2][2], matrix->mat4[2][3]);
+	printf("%f\t %f\t %f\t %f\n\n\n", matrix->mat4[3][0], matrix->mat4[3][1], matrix->mat4[3][2], matrix->mat4[3][3]);
 }
 
 int 	main(void)
 {
-	double res;
+	int				res;
 	t_aux 			ausiliario;				//struttura che viene usata come ausilio della principale per le operazioni
 	t_tupla			tuple;					//struttura che contiene tutti i dati generali
 	t_colori		color;
 	t_coloreaux		coloraux;
-	t_proiettile	pistola;
-	t_ambiente		posto;
-	void		*mlx;
-	void		*mlx_win;
-	t_data		img;
-	int			asorteta;
-	float		image_width = 600;
-	float 		image_height = 1000;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, image_height, image_width, "Danilo!");
-	img.img = mlx_new_image(mlx, image_height, image_width);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	for (int j = image_height-1; j >= 0; --j)
-	{
-		for (int i = 0; i < image_width; ++i)
-		{
-			asorteta = create_trgb(0, 0, 0, 0);
-			my_mlx_pixel_put(&img, j, i, asorteta);
-        }
-    }
-	asorteta = create_trgb(0, 255, 0, 0);
-	pistola.x = 0;
-	pistola.y = 1;
-	pistola.z = 0;
-	pistola.vx = 1;
-	pistola.vy = 1;
-	pistola.vz = 0;
-	posto.x = 0;
-	posto.y = -0.01;
-	posto.z = 0;
-	posto.vx = -0.01;
-	posto.vy = 0;
-	posto.vz = 0;
-	assegnazione_norm(&pistola, &posto, &ausiliario, &tuple);
-	tupla_normalizzazone(&tuple, &ausiliario);
-	pistola.vx = tuple.nx;
-	pistola.vy = tuple.ny;
-	pistola.vz = tuple.nz;
-	my_mlx_pixel_put(&img, (int)(pistola.z * -1), (int)(image_width - pistola.x), asorteta);
-	printf("posizione attuale proiettile x = %d, y = %d z = %d\n", (int)(image_width- pistola.x), (int)(pistola.y), (int)(pistola.z));
-	while (pistola.y > 0.9)
-	{
-		tick(&pistola, &posto, &ausiliario, &tuple);
-		my_mlx_pixel_put(&img, (int)(pistola.z * -1), (int)(image_width - pistola.x), asorteta);
-		printf("posizione attuale proiettile x = %d, y = %d z = %d\n", (int)(image_width -pistola.x), (int)(pistola.y ), (int)(pistola.z));
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	t_matrici		matrix;
+	t_assegnazione	assign;
+
+	assegnazione_mat4(&matrix, &assign);
+	printf("matrice :\n");
+	stampa_matrix4(&matrix);
+	printf("matrice scalata\n\n");
+	matrici_inversa4_4(&matrix);
+	stampa_matrix4a(&matrix);
 }
