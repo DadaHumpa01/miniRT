@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 08:32:07 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/13 21:24:54 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/14 20:00:37 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,13 @@ int 	main(void)
 	t_matrici		matrix;
 	t_assegnazione	assign;
 
-	assegnazione_mat4(&matrix, &assign);
-	printf("matrice :\n");
+	matrix.x = -3;
+	matrix.y = 4;
+	matrix.z = 5;
+	matrix.w = 1;
+	trasformazione_inversa_point(5, -3, 2, &matrix);
 	stampa_matrix4(&matrix);
-	printf("matrice scalata\n\n");
-	matrici_inversa4_4(&matrix);
-	stampa_matrix4a(&matrix);
+	printf(" matrice modificata \n\n");
+	stampa_matrix4p(&matrix);
+	
 }

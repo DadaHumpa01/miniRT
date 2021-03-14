@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:17:29 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/13 21:23:57 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/14 19:56:44 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct	s_matrici{
 	float		mat3a[3][3];
 	float		mat2[2][2];
 	float		mat2a[2][2];
+	float		x;
+	float		y;
+	float		z;
+	float		w;
 }				t_matrici;
 
 typedef struct	s_assegnazione{
@@ -68,5 +72,8 @@ int					matrice_cofattore(t_matrici *matrix, int a, int b);
 int					matrice_determinante3_3(t_matrici *matrix);
 int					matrice_determinante4_4(t_matrici *matrix);
 void				matrici_inversa4_4(t_matrici *matrix);
+void				trasformazione_point(float x, float y, float z, t_matrici *matrix);
+void				trasformazione_inversa_point(float x, float y, float z, t_matrici *matrix);
+void				matrice_trasport_b_a(t_matrici *matrix);
 
 #endif
