@@ -6,61 +6,11 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 08:32:07 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/15 16:17:21 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/15 21:33:33 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tupla.h"
-
-void	stampa_matrix2a(t_matrici *matrix)
-{
-	printf("%f\t %f\n\n", matrix->mat2a[0][0], matrix->mat2a[0][1]);
-	printf("%f\t %f\n\n", matrix->mat2a[1][0], matrix->mat2a[1][1]);
-}
-
-void	stampa_matrix2(t_matrici *matrix)
-{
-	printf("%f\t %f\n\n", matrix->mat2[0][0], matrix->mat2[0][1]);
-	printf("%f\t %f\n\n", matrix->mat2[1][0], matrix->mat2[1][1]);
-}
-
-void	stampa_matrix3a(t_matrici *matrix)
-{
-	printf("%f\t %f\t %f\n\n", matrix->mat3a[0][0], matrix->mat3a[0][1], matrix->mat3a[0][2]);
-	printf("%f\t %f\t %f\n\n", matrix->mat3a[1][0], matrix->mat3a[1][1], matrix->mat3a[1][2]);
-	printf("%f\t %f\t %f\n\n", matrix->mat3a[2][0], matrix->mat3a[2][1], matrix->mat3a[2][2]);
-}
-
-void	stampa_matrix3(t_matrici *matrix)
-{
-	printf("%f\t %f\t %f\n\n", matrix->mat3[0][0], matrix->mat3[0][1], matrix->mat3[0][2]);
-	printf("%f\t %f\t %f\n\n", matrix->mat3[1][0], matrix->mat3[1][1], matrix->mat3[1][2]);
-	printf("%f\t %f\t %f\n\n", matrix->mat3[2][0], matrix->mat3[2][1], matrix->mat3[2][2]);
-}
-
-void	stampa_matrix4p(t_matrici *matrix)
-{
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4p[0][0], matrix->mat4p[0][1], matrix->mat4p[0][2], matrix->mat4p[0][3]);
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4p[1][0], matrix->mat4p[1][1], matrix->mat4p[1][2], matrix->mat4p[1][3]);
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4p[2][0], matrix->mat4p[2][1], matrix->mat4p[2][2], matrix->mat4p[2][3]);
-	printf("%f\t %f\t %f\t %f\n\n\n", matrix->mat4p[3][0], matrix->mat4p[3][1], matrix->mat4p[3][2], matrix->mat4p[3][3]);
-}
-
-void	stampa_matrix4a(t_matrici *matrix)
-{
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4a[0][0], matrix->mat4a[0][1], matrix->mat4a[0][2], matrix->mat4a[0][3]);
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4a[1][0], matrix->mat4a[1][1], matrix->mat4a[1][2], matrix->mat4a[1][3]);
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4a[2][0], matrix->mat4a[2][1], matrix->mat4a[2][2], matrix->mat4a[2][3]);
-	printf("%f\t %f\t %f\t %f\n\n\n", matrix->mat4a[3][0], matrix->mat4a[3][1], matrix->mat4a[3][2], matrix->mat4a[3][3]);
-}
-
-void	stampa_matrix4(t_matrici *matrix)
-{
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4[0][0], matrix->mat4[0][1], matrix->mat4[0][2], matrix->mat4[0][3]);
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4[1][0], matrix->mat4[1][1], matrix->mat4[1][2], matrix->mat4[1][3]);
-	printf("%f\t %f\t %f\t %f\n\n", matrix->mat4[2][0], matrix->mat4[2][1], matrix->mat4[2][2], matrix->mat4[2][3]);
-	printf("%f\t %f\t %f\t %f\n\n\n", matrix->mat4[3][0], matrix->mat4[3][1], matrix->mat4[3][2], matrix->mat4[3][3]);
-}
 
 int 	main(void)
 {
@@ -71,15 +21,10 @@ int 	main(void)
 	t_coloreaux		coloraux;
 	t_matrici		matrix;
 	t_assegnazione	assign;
+	t_sfera			sphere;
 
-	matrix.x = 2;
-	matrix.y = 3;
-	matrix.z = 4;
-	matrix.w = 1;
-	printf("dopo ridimensionamento\n\n");
-	taglio_assegnazione_helper_z(0, 1, &assign);
-	matrice_taglio(&matrix, &assign);
-	stampa_matrix4(&matrix);
-	printf(" matrice modificata \n\n");
-	stampa_matrix4p(&matrix);
+	creazione_punto_sfera(0, 0, -5, &sphere);
+	creazione_vettore_dir_sfera(0, 0, 1, &sphere);
+	punti_intersezione(&sphere);
+	printf("ritorno 1: %f, ritorno 2: %f", sphere.t1, sphere.t2);
 }

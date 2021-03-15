@@ -64,6 +64,27 @@ typedef struct	s_ambiente{
 	float		vz;
 }				t_ambiente;
 
+typedef struct	s_sfera{
+	float		px;
+	float		py;
+	float		pz;
+	float		pw;
+	float		x;
+	float		y;
+	float		z;
+	float		w;
+	float		dx;
+	float		dy;
+	float		dz;
+	float		dw;
+	float		rtsx;
+	float		rtsy;
+	float		rtsz;
+	float		rtsw;
+	float		t1;
+	float		t2;
+}				t_sfera;
+
 void			aux_vettore(float x, float y, float z, t_aux *ausiliario);
 void			aux_punto(float x, float y, float z, t_aux *ausiliario);
 int				aux_punto_o_vettore(t_aux *ausiliario);
@@ -87,5 +108,10 @@ void			colore_dot_scalare(t_colori *color, float num);
 void			colore_dot(t_colori *color, t_coloreaux *coloreaux);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				create_trgb(int t, int r, int g, int b);
+void			creazione_vettore_dir_sfera(float x, float y, float z, t_sfera *sphere);
+void			creazione_punto_sfera(float x, float y, float z, t_sfera *sphere);
+void			spostamento_nel_tempo(float t, t_sfera *sphere);
+double			delta(t_sfera *sphere);
+void			punti_intersezione(t_sfera *sphere);
 
 #endif
