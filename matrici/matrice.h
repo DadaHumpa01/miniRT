@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:17:29 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/14 19:56:44 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/15 08:11:50 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,8 @@ void				matrici_inversa4_4(t_matrici *matrix);
 void				trasformazione_point(float x, float y, float z, t_matrici *matrix);
 void				trasformazione_inversa_point(float x, float y, float z, t_matrici *matrix);
 void				matrice_trasport_b_a(t_matrici *matrix);
-
+void				ridimensionamento(float x, float y, float z, t_matrici *matrix);
+void				matrice_tupla_matrix(t_matrici *matrix);
+void				riassegnazione_p_a(t_matrici *matrix);
+void				assign_valori(t_matrici *matrix);
 #endif
