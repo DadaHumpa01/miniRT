@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:47:43 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/14 10:53:38 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/15 11:55:38 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	inversione_effettiva(t_matrici *matrix)
 
 void	matrici_inversa4_4(t_matrici *matrix)
 {
-	if (matrice_determinante4_4(matrix) == 0)
-		return ;
-	else
-	{	
+	//if (matrice_determinante4_4(matrix) == 0)
+	//	return ;
+	//else
+	//{	
 		inversione_effettiva(matrix);
 		moltiplicazione_inv(matrix);
-	}
+	//}
 }

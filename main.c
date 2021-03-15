@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 08:32:07 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/15 08:40:25 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/15 16:17:21 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,14 @@ int 	main(void)
 	t_matrici		matrix;
 	t_assegnazione	assign;
 
-	matrix.x = -4;
-	matrix.y = 6;
-	matrix.z = 8;
+	matrix.x = 2;
+	matrix.y = 3;
+	matrix.z = 4;
 	matrix.w = 1;
-	stampa_matrix4(&matrix);
 	printf("dopo ridimensionamento\n\n");
-	ridimensionamento(2, 3, 4, &matrix);
+	taglio_assegnazione_helper_z(0, 1, &assign);
+	matrice_taglio(&matrix, &assign);
 	stampa_matrix4(&matrix);
 	printf(" matrice modificata \n\n");
 	stampa_matrix4p(&matrix);
-	
 }

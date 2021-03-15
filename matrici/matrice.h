@@ -6,7 +6,7 @@
 /*   By: danilo <danilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:17:29 by danilo            #+#    #+#             */
-/*   Updated: 2021/03/15 08:11:50 by danilo           ###   ########.fr       */
+/*   Updated: 2021/03/15 15:31:41 by danilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,13 @@ void				ridimensionamento(float x, float y, float z, t_matrici *matrix);
 void				matrice_tupla_matrix(t_matrici *matrix);
 void				riassegnazione_p_a(t_matrici *matrix);
 void				assign_valori(t_matrici *matrix);
+void				ridimensionamento_inv(float x, float y, float z, t_matrici *matrix);
+void				rotazione_asse_x(float radianti, t_matrici *matrix);
+void				rotazione_asse_x_inv(float radianti, t_matrici *matrix);
+void				rotazione_asse_y(float radianti, t_matrici *matrix);
+void				rotazione_asse_z(float radianti, t_matrici *matrix);
+void				matrice_taglio(t_matrici *matrix, t_assegnazione *assign);
+void				taglio_assegnazione_helper_z(float zx, float zy, t_assegnazione *assign);
+void				taglio_assegnazione_helper_x_y(float x, float y, int help, t_assegnazione *assign);
+
 #endif
