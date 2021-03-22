@@ -4,7 +4,7 @@
 # include "matrici/matrice.h"
 # include <stdio.h>
 # include <math.h>
-# include "mlx.h"
+# include <mlx.h>
 
 typedef struct	s_data {
 	void		*img;
@@ -113,5 +113,6 @@ void			creazione_punto_sfera(float x, float y, float z, t_sfera *sphere);
 void			spostamento_nel_tempo(float t, t_sfera *sphere);
 double			delta(t_sfera *sphere);
 void			punti_intersezione(t_sfera *sphere);
+int				sfera_instersezioni(t_sfera *sphere);
 
 #endif
